@@ -53,7 +53,7 @@ void LowLatencyVoiceEngine::processFrame(float* data, int n, float pitchRatio, f
         const float pMag = std::hypot(spec[(size_t)2*pitchSrc], spec[(size_t)2*pitchSrc+1]);
         const float fMag = std::hypot(spec[(size_t)2*formantSrc], spec[(size_t)2*formantSrc+1]);
         const float local = juce::jlimit(0.35f, 2.5f, fMag / juce::jmax(pMag, 1.0e-5f));
-        const float mag = juce::hypot(spec[(size_t)2*k], spec[(size_t)2*k+1]);
+        const float mag = std::hypot(spec[(size_t)2*k], spec[(size_t)2*k+1]);
         const float phase = std::atan2(spec[(size_t)2*k+1], spec[(size_t)2*k]);
         const float formantBlend = juce::jlimit(0.0f, 1.0f, std::abs(formantPercent));
         const float shaped = mag * juce::jmap(formantBlend, 1.0f, local);
