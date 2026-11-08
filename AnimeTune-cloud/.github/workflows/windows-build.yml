@@ -26,9 +26,11 @@ jobs:
           arch: x64
 
       - name: Configure CMake
+      shell: cmd
         run: cmake -S . -B build -A x64 -DCMAKE_BUILD_TYPE=Release
 
       - name: Build VST3
+      shell: cmd
         run: cmake --build build --config Release --parallel
 
       - name: Verify VST3 bundle
