@@ -61,7 +61,7 @@ void AnimeTuneAudioProcessor::processBlock(juce::AudioBuffer<float>& buffer, juc
     const float strength = apvts.getRawParameterValue("strength")->load();
     const float retune = apvts.getRawParameterValue("retune")->load();
     const int preset = (int) apvts.getRawParameterValue("preset")->load();
-    engine.process(buffer, pitchRatio, formant, strength, retune, preset == 5, detectedMidi, detectedConfidence);
+    engine.process(buffer, pitchRatio, formant, strength, retune, detectedMidi, detectedConfidence);
 
     // Lightweight output conditioning. All coefficients are parameterized and
     // smoothed by the host-facing parameters; no heap work is required here.
